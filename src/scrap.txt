@@ -1,0 +1,17 @@
+<Routes>
+    <Route path="/Login" element={<Login />} />
+    <Route path="/Signup" element={<Signup />} />
+    <Route
+        path="/*"
+        element={
+            <>
+            {/* <NavBar /> */}
+            <div className="content">
+                <Routes>
+                    {/* <Route path="/FeaturesPage" element={<FeaturesPage />} /> */}
+                </Routes>
+            </div>
+            </>
+        }
+    />
+</Routes>
