@@ -20,7 +20,7 @@
 
 .App {
   text-align: center;
-  font-family: 'proxima_nova_rgbold';
+  font-family: 'proxima_nova_rgregular';
   background-color: #f8f9fa; /* Bootstrap light background color */
   margin: 0;
   padding: 0;
@@ -38,8 +38,8 @@
 .Question-button{
   padding: 25px 30px;
   background-color: #050801;
-  color: #f5c000;
-  font-weight: bold;
+  color: #BBBEB4;
+  font-weight: thin;
   border: none;
   border-radius: 5px;
   letter-spacing: 0.5px;
@@ -50,12 +50,12 @@
 }
 
 .Question-button:hover{
-    background: #f5c000;
+    background: #BBBEB4;
     color: #050801;
-    box-shadow: 0 0 5px #f5c000,
-                0 0 25px #f5c000,
-                0 0 50px #f5c000,
-                0 0 200px #f5c000;
+    box-shadow: 0 0 5px #BBBEB4,
+                0 0 25px #BBBEB4,
+                0 0 50px #BBBEB4,
+                0 0 200px #BBBEB4;
     border-bottom: #050801 thin;
      -webkit-box-reflect:below 15px linear-gradient(transparent, #0005);
 }

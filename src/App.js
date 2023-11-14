@@ -3,18 +3,21 @@ import { Routes, Route, Navigate, BrowserRouter as Router } from 'react-router-d
 import UserDashboard from './User_Dashboard/UserDashboard';
 import ManagerDashboard from './Manager_Dashboard/ManagerDashboard';
 import MainLogo from './Dorm-Logos/1.png';
+import Signup from './Signup_page/Signup';
 import './App.css';
+import { AuthProvider } from './Config/AuthContext';
 
 const SplashScreen = ({ onUserChoose }) => {
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center text-center vh-100 w-100'>
-      <p>Define youselves:</p>
-      <div className='d-flex flex-wrap justify-content-evenly w-50 mt-5'>
-        <button className='Question-button m-2' onClick={() => onUserChoose('user')}>User</button>
-        <button className='Question-button m-2' onClick={() => onUserChoose('manager')}>Manager</button>
+    <AuthProvider>
+      <div className='d-flex flex-column justify-content-center align-items-center text-center vh-100 w-100'>
+        <p>Define youselves:</p>
+        <div className='d-flex flex-wrap justify-content-evenly w-50 mt-5'>
+          <button className='Question-button m-2' onClick={() => onUserChoose('user')}>User</button>
+          <button className='Question-button m-2' onClick={() => onUserChoose('manager')}>Manager</button>
+        </div>
       </div>
-    </div>
-
+    </AuthProvider>
   );
 };
 
@@ -45,11 +48,11 @@ function App() {
         ) : (
           <Routes>
             <Route path="/" element={<SplashScreen onUserChoose={handleUserChoose} />} />
-            {userRole === 'user' && <Route path="/dashboard" element={<UserDashboard />} />}
-            {userRole === 'manager' && <Route path="/dashboard" element={<ManagerDashboard />} />}
+            {userRole === 'user' && <Route path="/signup" element={<Signup />} />}
+            {userRole === 'manager' && <Route path="/signup" element={<Signup />} />}
           </Routes>
         )}
-        {userRole && <Navigate to="/dashboard" />}
+        {userRole && <Navigate to="/signup" />}
       </div>
     </Router>
   );
