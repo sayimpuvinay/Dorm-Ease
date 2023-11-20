@@ -1,61 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, BrowserRouter as Router } from 'react-router-dom';
-import UserDashboard from './User_Dashboard/UserDashboard';
-import ManagerDashboard from './Manager_Dashboard/ManagerDashboard';
-import MainLogo from './Dorm-Logos/1.png';
-import Signup from './Signup_page/Signup';
+import React from 'react';
+import MainLogo from './Dorm-Logos/5.png';
 import './App.css';
-import { AuthProvider } from './Config/AuthContext';
+import { Routes, Route, BrowserRouter as Router, Link } from 'react-router-dom';
+import Signup from './Signup_page/Signup';
+import Login from './Login_page/Login';
 
-const SplashScreen = ({ onUserChoose }) => {
-  return (
-    <AuthProvider>
-      <div className='d-flex flex-column justify-content-center align-items-center text-center vh-100 w-100'>
-        <p>Define youselves:</p>
-        <div className='d-flex flex-wrap justify-content-evenly w-50 mt-5'>
-          <button className='Question-button m-2' onClick={() => onUserChoose('user')}>User</button>
-          <button className='Question-button m-2' onClick={() => onUserChoose('manager')}>Manager</button>
-        </div>
+const Home = () => (
+  <div className='d-flex align-items-center justify-content-center vh-100'>
+    <div className='text-center w-50 vh-100 welcome-img-div align-items-center justify-content-center'>
+      <img className="welcome-img" src={MainLogo} alt="DormEase Logo" />
+      <p className='welcome-text'>Please select with the following --{'>'} </p>
+    </div>
+    <div className='d-flex flex-column justify-content-center mx-3 w-50'>
+      <div className="button-container">
+        <Link to="/signup">
+          <button className='entry-buttons'>Signup</button>
+        </Link>
       </div>
-    </AuthProvider>
-  );
-};
-
-
-function App() {
-  const [userRole, setUserRole] = useState(null);
-  const [showLogo, setShowLogo] = useState(true);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShowLogo(false);
-    }, 2000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  const handleUserChoose = (role) => {
-    setUserRole(role);
-  };
-
-  return (
-    <Router>
-      <div className="App">
-        {showLogo ? (
-          <div className="logo-container">
-            <img src={MainLogo} alt="Logo" className="logo" />
-          </div>
-        ) : (
-          <Routes>
-            <Route path="/" element={<SplashScreen onUserChoose={handleUserChoose} />} />
-            {userRole === 'user' && <Route path="/signup" element={<Signup />} />}
-            {userRole === 'manager' && <Route path="/signup" element={<Signup />} />}
-          </Routes>
-        )}
-        {userRole && <Navigate to="/signup" />}
+      <div className="button-container">
+        <Link to="/login">
+          <button className='entry-buttons'>Login</button>
+        </Link>
       </div>
-    </Router>
-  );
-}
+    </div>
+  </div>
+);
+
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
+  </Router>
+);
 
 export default App;

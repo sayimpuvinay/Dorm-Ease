@@ -1,61 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-}
-
-.logo-container.fade-out {
-  opacity: 0;
-}
-
-.logo {
-  max-width: 100%;
-  max-height: 100%;
+/* App.css */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100% !important;
 }
 
 .App {
-  text-align: center;
-  font-family: 'proxima_nova_rgregular';
-  background-color: #f8f9fa; /* Bootstrap light background color */
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column; /* Stack the children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  max-height: 100vh;
 }
 
-.question-container {
-  margin-top: 20px;
-}
-
-.question {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.Question-button{
-  padding: 25px 30px;
+.welcome-img-div {
   background-color: #050801;
-  color: #BBBEB4;
+  height: 100%; /* Use 100% height to cover the entire height of the container */
+}
+
+.welcome-text{
+  color: #BBBBBB;
+}
+
+.welcome-img {
+  width: 70%;
+}
+
+.button-container {
+  text-align: center; /* Center the buttons within their container */
+  margin: 10px 0; /* Add some vertical spacing between the buttons */
+}
+
+.link-signin{
+  text-decoration: none!important;
+}
+
+.entry-buttons {
+  width: 30%;
+  background-color: #050801 !important;
+  text-decoration: none !important;
+  color: #BBBEB4 !important;
   font-weight: thin;
-  border: none;
+  border: none !important;
   border-radius: 5px;
   letter-spacing: 0.5px;
   overflow: hidden;
   transition: 0.5s;
   cursor: pointer;
-  width: 30vh;
+  height: 7vh !important;
 }
 
-.Question-button:hover{
-    background: #BBBEB4;
-    color: #050801;
-    box-shadow: 0 0 5px #BBBEB4,
-                0 0 25px #BBBEB4,
-                0 0 50px #BBBEB4,
-                0 0 200px #BBBEB4;
-    border-bottom: #050801 thin;
-     -webkit-box-reflect:below 15px linear-gradient(transparent, #0005);
+.entry-buttons:hover {
+  background: #BBBEB4 !important;
+  color: #050801 !important;
+  box-shadow: 0 0 5px #BBBEB4,
+              0 0 25px #BBBEB4,
+              0 0 50px #BBBEB4,
+              0 0 200px #BBBEB4;
+  border-bottom: #050801 thin;
 }

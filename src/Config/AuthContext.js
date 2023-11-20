@@ -1,39 +1,44 @@
-// AuthContext.js
-
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { auth } from "./firebase";
 
-const AuthContext = createContext();
+const AuthContext = () => {
+  const [authUser, setAuthUser] = useState(null);
 
-export function useAuth() {
-    return useContext(AuthContext);
-}
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
 
-export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            setCurrentUser(user);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    const signup = async (email, password) => {
-        try {
-            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-            return userCredential.user;
-        } catch (error) {
-            throw error;
-        }
+    return () => {
+      listen();
     };
+  }, []);
 
-    const value = {
-        currentUser,
-        signup,
-        // Add other functions like login, logout, etc. here if needed
-    };
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("sign out successful");
+      })
+      .catch((error) => console.log(error));
+  };
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
+  return (
+    <div>
+      {authUser ? (
+        <>
+          <p>{`Signed In as ${authUser.email}`}</p>
+          <button onClick={userSignOut}>Sign Out</button>
+        </>
+      ) : (
+        <p>Signed Out</p>
+      )}
+    </div>
+  );
+};
+
+export default AuthContext;
