@@ -1,8 +1,8 @@
-// UserDashboard.js
 import React from 'react';
+import AuthContext from '../Authentication/AuthContext';
 
 const UserDashboard = () => {
-  return <div>User Dashboard is working</div>;
+  return <div><AuthContext/></div>;
 };
 
 export default UserDashboard;

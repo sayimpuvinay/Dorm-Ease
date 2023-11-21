@@ -3,7 +3,7 @@ import { Form, Button, Card } from 'react-bootstrap';
 import './Signup.css';
 import MainLogo from '../Dorm-Logos/Dorm-no-bg.png';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Config/firebase";
+import { auth } from "./firebase";
 import { Link } from "react-router-dom";
 
 const Signup = () => {

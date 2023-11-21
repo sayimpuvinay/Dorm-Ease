@@ -2,8 +2,9 @@ import React from 'react';
 import MainLogo from './Dorm-Logos/5.png';
 import './App.css';
 import { Routes, Route, BrowserRouter as Router, Link } from 'react-router-dom';
-import Signup from './Signup_page/Signup';
-import Login from './Login_page/Login';
+import Signup from './Authentication/Signup';
+import Login from './Authentication/Login';
+import UserDashboard from './User_Dashboard/UserDashboard';
 
 const Home = () => (
   <div className='d-flex align-items-center justify-content-center vh-100'>
@@ -32,6 +33,7 @@ const App = () => (
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
+      <Route path='/userdashboard' element={<UserDashboard />} />
     </Routes>
   </Router>
 );
