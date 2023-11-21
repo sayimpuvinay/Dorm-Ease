@@ -20,6 +20,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert(error.message);
       });
   };
 
@@ -31,7 +32,7 @@ const Login = () => {
             <img src={MainLogo} alt="Bootstrap" width="60" height="54"/>
           </a>
           <div className="d-flex justify-content-center aligh-items-center text-center mt-2">
-            <p>Don't Have an Account? <Link className="link-signin" to="/signin"><div className="login-link">Sign Up</div></Link></p>
+            <p>Don't Have an Account? <Link className="link-signin" to="/signup"><div className="login-link">Sign Up</div></Link></p>
           </div>
         </div>
       </nav>
